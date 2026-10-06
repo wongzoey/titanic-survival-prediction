@@ -1,6 +1,6 @@
 ﻿# Titanic Survival Prediction
 
-A machine learning project that predicts whether a passenger survived the Titanic disaster using passenger demographic and travel information. The project demonstrates data preprocessing, feature engineering through encoding, model training, hyperparameter tuning, evaluation, and model interpretability using **Random Forest** and **Logistic Regression**.
+A machine learning project that predicts whether a passenger survived the Titanic disaster using passenger demographic and travel information. This project demonstrates an end-to-end data science workflow, including data preprocessing, feature engineering, hyperparameter tuning, model evaluation, and interpretability. It compares six different classification algorithms: **Random Forest, Logistic Regression, Support Vector Machine (SVM), K-Nearest Neighbours (KNN), Gradient Boosting, and XGBoost**.
 
 ## 📌 Project Overview
 
@@ -20,6 +20,61 @@ The workflow includes:
 * Evaluating model performance using classification reports and confusion matrices
 * Analysing feature importance
 * Comparing Random Forest and Logistic Regression models
+
+## 📁 Notebook Structure
+The project follows a structured approach from data ingestion to final conclusions:
+
+Titanic Survival Prediction
+│
+├── 1. Import Libraries
+│
+├── 2. Load Dataset
+│
+├── 3. Exploratory Data Analysis
+│   ├── Dataset overview
+│   ├── Missing values
+│   └── Target distribution
+│
+├── 4. Feature Selection
+│
+├── 5. Train-Test Split
+│
+├── 6. Data Preprocessing
+│   ├── Numerical pipeline
+│   ├── Categorical pipeline
+│   └── ColumnTransformer
+│
+├── 7. Model Training
+│   ├── Random Forest
+│   ├── Logistic Regression
+│   ├── Support Vector Machine
+│   ├── K-Nearest Neighbours
+│   ├── Gradient Boosting
+│   └── XGBoost
+│
+├── 8. Model Evaluation
+│   ├── Classification Reports
+│   ├── Confusion Matrices
+│   ├── Accuracy
+│   ├── Precision
+│   ├── Recall
+│   └── F1 Score
+│
+├── 9. ROC-AUC Analysis
+│   └── Combined ROC Curves
+│
+├── 10. Model Comparison
+│   ├── Performance table
+│   ├── Accuracy comparison
+│   └── F1 comparison
+│
+├── 11. Cross-Validation Analysis
+│
+├── 12. Feature Importance
+│   ├── Random Forest
+│   └── XGBoost
+│
+└── 13. Final Conclusions
 
 ## 🎯 Objective
 
@@ -68,6 +123,7 @@ survived
 * **Matplotlib** — data visualisation
 * **Seaborn** — dataset and visualisation
 * **Scikit-learn** — preprocessing, model training, hyperparameter tuning and evaluation
+* **XGBoost** — advanced gradient boosting classification
 
 ## 🔄 Machine Learning Workflow
 
@@ -113,37 +169,13 @@ Missing values → Most Frequent Imputation → One-Hot Encoding
 
 A `ColumnTransformer` combines both preprocessing pipelines.
 
-## 🌲 Random Forest
+### 3. Model Evaluation & ROC-AUC Analysis
+The models are comprehensively evaluated using multiple metrics: Accuracy, Precision, Recall, F1-score, and ROC-AUC. Visualizations include classification reports, confusion matrices, and combined ROC curves to assess the true positive vs. false positive tradeoff.
 
-The first model used is a `RandomForestClassifier`.
-
-GridSearchCV is used with 5-fold stratified cross-validation to search for the best combination of:
-
-* Number of estimators: `50`, `100`
-* Maximum tree depth: `None`, `10`, `20`
-* Minimum samples required to split a node: `2`, `5`
-
-The model is evaluated using **accuracy** as the scoring metric.
-
-### Feature Importance
-
-After training, Random Forest feature importance scores are extracted to identify which transformed features contributed most to the model's predictions.
-
-A feature-importance bar chart is generated to visualise the results.
-
-## 📈 Logistic Regression
-
-A Logistic Regression classifier is subsequently trained as a second model to compare its performance against the Random Forest model.
-
-The hyperparameter search considers:
-
-* Solver: `liblinear`
-* Penalty: `l1`, `l2`
-* Class weight: `None`, `balanced`
-
-The Logistic Regression model is also evaluated using a classification report and confusion matrix.
-
-The coefficients of the trained model are extracted to analyse the relative importance of the features.
+### 4. Feature Importance & Interpretability
+To interpret how models make their decisions, the project extracts and visualizes importance metrics:   
+* **Tree-based models (Random Forest & XGBoost)**: Feature importance scores are extracted and plotted to identify the most significant transformed features.
+* **Logistic Regression**: Coefficient magnitudes are extracted and plotted as a bar chart to analyze the relative impact (positive or negative) of each feature. 
 
 ## 📏 Model Evaluation
 
@@ -177,10 +209,14 @@ The final test-set accuracy is also calculated for each model.
 
 The notebook generates visualisations including:
 
-1. Random Forest confusion matrix
+1. Random Forest, Logistic Regression, Support Vector Machine, K-Nearest Neighbour, Gradient Boosting, and XGBoost confusion matrix
 2. Random Forest feature importance
-3. Logistic Regression confusion matrix
-4. Logistic Regression coefficient magnitude
+3. Logistic Regression coefficient magnitude
+4. Gradient Boosting feature importance
+5. XGBoost feature importance
+6. Model accuracy comparison
+7. Model F1 score comparison
+8. ROC curves model comparison
 
 These visualisations help evaluate model performance and understand which features influence predictions.
 
@@ -205,7 +241,7 @@ cd titanic-survival-prediction
 ### 2. Install Dependencies
 
 ```bash
-pip install numpy pandas matplotlib scikit-learn seaborn
+pip install numpy pandas matplotlib scikit-learn seaborn xgboost
 ```
 
 ### 3. Run the Notebook
@@ -235,10 +271,8 @@ This project demonstrates practical applications of several machine-learning con
 * Hyperparameter tuning
 * GridSearchCV
 * Stratified K-Fold cross-validation
-* Confusion matrices
-* Classification metrics
-* Feature importance
-* Model coefficient analysis
+* Evaluation metrics: Confusion matrices, Precision, Recall, F1, and ROC-AUC
+* Model interpretability via Feature Importance and Coefficient Analysis   
 
 ## 🔍 Learning Outcomes
 
@@ -251,5 +285,3 @@ Through this project, I explored how to:
 * Compare different classification algorithms
 * Evaluate classification performance using multiple metrics
 * Interpret trained models through feature importance and coefficients
-
-⭐ If you found this project useful, feel free to star the repository!
