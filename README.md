@@ -24,6 +24,7 @@ The workflow includes:
 ## 📁 Notebook Structure
 The project follows a structured approach from data ingestion to final conclusions:
 
+```text
 Titanic Survival Prediction
 │
 ├── 1. Import Libraries
@@ -75,6 +76,7 @@ Titanic Survival Prediction
 │   └── XGBoost
 │
 └── 13. Final Conclusions
+```
 
 ## 🎯 Objective
 
